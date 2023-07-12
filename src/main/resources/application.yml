@@ -1,0 +1,55 @@
+# 配置启动 tomcat 的端口号为 8080
+server:
+  port: 8080
+
+#每个项目启动都是一个应用，每个应用都会有名称
+spring:
+  application:
+#    应用名称，默认配置工程名
+    name: reggie_take_out
+  datasource:
+#    type:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true&connectTimeout=5000
+#      url: jdbc:mysql://localhost:3306/reggie?characterEncoding=utf-8&serverTimezone=GMT%2B8
+      username: root
+      password: 1234
+#  redis:
+#    host:172.17.2.94
+#    port: 6379
+#    password: root@123456
+#    database: 0
+
+  mail:
+#    服务主机  163邮箱则为 smtp.163.com
+    host: smtp.qq.com
+# 你的QQ邮箱，这里为发件人，填自己的即可
+    username: 564752114@qq.com
+# 你的QQ邮箱授权码
+    password: lhradnnrexjfbecd
+    protocol: smtp
+    default-encoding: UTF-8
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          stattls:
+            enable: true
+            required: true
+
+
+mybatis-plus:
+  configuration:
+#    在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+#    例如：address_book --> AddressBook  【address_book --> addressBook】
+#     表名和实体类名的映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID # 配置主键-生成策略
+
+reggie:
+  path: D:\img\
